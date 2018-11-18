@@ -4,6 +4,12 @@ body{
     background-size: cover;
 }
 
+button{
+    margin: 10px;
+    height: 50px;
+    font-size: 20px;
+}
+
 #gameField{
     text-align: center;
     background-color: white;
@@ -48,4 +54,6 @@ body{
     margin: 20px;
     font-size: 25px;
 }
+
+
 
