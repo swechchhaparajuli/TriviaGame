@@ -1,0 +1,51 @@
+
+body{
+    background-image: url("../images/globalWarming.jpg");
+    background-size: cover;
+}
+
+#gameField{
+    text-align: center;
+    background-color: white;
+    
+    color: slategray;
+    opacity: 0.7;
+}
+
+#countDown{
+    text-align: left;
+}
+
+.form-check-label{
+    text-emphasis: bold;
+}
+
+.started{
+    visibility: collapse;
+}
+
+#Ice_Caps{
+    height: 100px;
+    width: 150px;
+    margin: 20px;
+    font-size: 30px;
+}
+#Deforestation{
+    height: 100px;
+    width: 150px;
+    margin: 20px;
+    font-size: 23px;
+}
+#Ocean{
+    height: 100px;
+    width: 150px;
+    margin: 20px;
+    font-size: 30px;
+}
+#Agriculture{
+    height: 100px;
+    width: 150px;
+    margin: 20px;
+    font-size: 25px;
+}
+

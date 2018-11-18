@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Environmental Trivia</title>
+
+  <!-- This line is money! It points your HTML to the CSS file. -->
+  <!-- Notice the "relative" pathway? It matches a file inside our current directory's "assets" folder. Open it to see our style rules. -->
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
+  </head>
+
+  <title>Environmental Trivia</title>
+
+<body>  
+
+        <div class="container"> 
+            <br>
+
+            
+
+            <div class="jumbotron" id = "gameField">
+
+                    <div id = "notBegun">
+
+                        <h1>Choose a Topic</h1>
+
+                            <button type="button" class="btn btn-primary" id = "Ocean"> Ocean </button>
+                            
+                            <button type="button" class="btn btn-success" id = "Deforestation"> Deforestation </button>
+                            
+                            <button type="button" class="btn btn-info" id = "Ice_Caps"> Ice Caps </button>
+                           
+                            <button type="button" class="btn btn-warning" id = "Agriculture"> Agriculture </button>
+        
+                    </div>
+
+                <div class = "started">
+                    <h1>Welcome To The Environmental Trivia Game!</h1>
+                    <br>
+                    <hr>
+                     <br>
+                    <h6 id = "countDown"> </h4>
+                    
+                    <h3 id = "question"></h2>
+                    <br>
+                   
+                    <div class="options">
+                           
+                        <button class = "answer"> </button>
+                        <br>
+
+                             
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" id = "submit"> Next > </button> 
+
+            </div>
+        </div>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/javascript/app.js"></script>
+
+    </body>
