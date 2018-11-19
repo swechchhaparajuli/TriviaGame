@@ -1,6 +1,6 @@
 
 
-var t = 5000;
+var time = 300;
 var deforestationBool = false;
 var cattleBool = false; 
 var polarBool = false; 
@@ -9,8 +9,8 @@ var ans = "";
 var qCount = 0;
 var questions = [];
 var answers = [];
-points = 0;
-
+var points = 0;
+var intervalId;
 
 var deforestation = {
 
@@ -22,7 +22,6 @@ var deforestation = {
      "___________ of the world’s tropical forests has already been cleared.",
      "The United States has less than ____ of the world’s population but consumes more than ______ of the world’s paper.",
      "_____ of the world’s oxygen is produced in the Amazon forest."
-
     ],
 
       a1 : ["Agriculture"],
@@ -61,8 +60,11 @@ var deforestation = {
             option.attr("value", answers[qCount][i]);
             option.text(answers[0][i]);
             $(".choices").append(option);
+            console.log(option);
         }  
         qCount = 1;
+
+        intervalId = setInterval(subTime, 1000); 
     }
 
 };
@@ -117,6 +119,8 @@ var cattle = {
             $(".choices").append(option);
         }  
         qCount = 1;
+
+        intervalId = setInterval(subTime, 1000); 
     }
 
 };
@@ -172,6 +176,8 @@ var polar = {
             $(".choices").append(option);
         }  
         qCount = 1;
+
+        intervalId = setInterval(subTime, 1000); 
     }
 
 };
@@ -226,6 +232,8 @@ var oceans = {
             $(".choices").append(option);
         }  
         qCount = 1;
+
+        intervalId = setInterval(subTime, 1000); 
     }
 };
 
@@ -268,26 +276,23 @@ $("#Ocean").on("click", function() {
 
 });
 
-$(".answer").on("click", function() {
-    console.log("something");
-    
-
-});
-
 
 $("#submit").on("click", function() {
-    $(".choices").empty();
-
-    console.log(questions[qCount]);
-    console.log(qCount)
-
+    resetTime();
+    $("#countDown").text ("Time Left: " + timeConverter(0));
     computeQuestions();
-    points++;
 
 });
+
+
 
 
 function computeQuestions(){
+    $(".choices").empty();
+
+    console.log(questions[qCount]);
+    console.log(qCount);
+
 
     if(qCount > 6){
         $(".started").empty();
@@ -306,14 +311,47 @@ function computeQuestions(){
     }
     qCount++;
 
+    console.log(option)
+
+    intervalId = setInterval(subTime, 1000); 
+
 }
+
+$(".answer").on("click", function() {
+    console.log("something worked");
+    var image = $("<img>");
+    if (ans == this.value){
+        $(".started").css("visibility", "collapse");
+        image.attr("src", "url()");
+        intervalId = setInterval(($(".started").append(image)), 120); 
+        resetTime();
+        points++;
+    }else{
+        $(".started").css("visibility", "collapse");
+        image.attr("src", "url()");
+        intervalId = setInterval(($(".started").append(image)), 120); 
+        resetTime();
+    } 
+
+    computeQuestions();
+
+});
+
 
 function subTime(){
-
+    time--;
+    $("#countDown").text ("Time Left: " + timeConverter(time));
+    if (time == 0){
+        resetTime();
+        computeQuestions();
+    }
 }
 
 
-
+function resetTime(){
+    clearInterval(intervalId);
+    time = 300;
+}
 
 
  function timeConverter(t) {
