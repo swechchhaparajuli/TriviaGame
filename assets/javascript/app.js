@@ -288,6 +288,7 @@ function computeQuestions(){
     
     console.log(ans);
     if(qCount > 6){
+        
         $(".started").css("visibility", "collapse");
 
         $("#resultsIn").append("<p> You got " + points + " correct.<p>");
@@ -306,21 +307,25 @@ function computeQuestions(){
         restart.addClass("restart");
         restart.text("Replay");
         $("#resultsIn").append(restart);
-    }
+    }else{
 
     $("#question").text(questions[qCount]); 
-    
+    var j = 0; 
+    var shuffled = [];
 
     for (var i = 0; i < answers[qCount].length; i++ ){
+       // j = Math.floor(Math.random()*4);
         option = $("<button>");
         
         option.addClass("answer");
         option.attr("value", answers[qCount][i]);
         option.text(answers[qCount][i]);
-        $(".choices").append(option);  
+        $(".choices").append(option);
+
     }
     qCount++;
     intervalId = setInterval(subTime, 1000); 
+    }
 
    // console.log(option);
 
@@ -379,6 +384,8 @@ function winOrLoss(){
     }
     ans = ""; 
 }
+
+//starting game again withOUT refreshing 
 
 $(document).on("click", ".restart", function() {
 
