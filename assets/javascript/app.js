@@ -235,7 +235,7 @@ var oceans = {
     }
 };
 
-$("#Ice_Caps").on("click", function() {
+$(document).on("click", "#Ice_Caps", function() {
    
     $('body').css("background-image", "url(./assets/images/iceCap.jpg)"); 
     $("#notBegun").empty();
@@ -245,7 +245,7 @@ $("#Ice_Caps").on("click", function() {
 
 });
 
-$("#Deforestation").on("click", function() {
+$(document).on("click", "#Deforestation", function() {
     $('body').css("background-image", "url(./assets/images/deforestation.jpg)"); 
     $("#notBegun").empty();
     //$("#notBegun").css("visibility", "collapse"); 
@@ -254,7 +254,7 @@ $("#Deforestation").on("click", function() {
 
 });
 
-$("#Agriculture").on("click", function() {
+$(document).on("click", "#Agriculture", function() {
     $('body').css("background-image", "url(./assets/images/cattle.jpg)"); 
     $("#notBegun").empty();
    // $("#notBegun").css("visibility", "collapse"); 
@@ -264,7 +264,7 @@ $("#Agriculture").on("click", function() {
 
 });
 
-$("#Ocean").on("click", function() {
+$(document).on("click", "#Ocean", function() {
     $("body").css("background-image", "url(./assets/images/coral.jpg)"); 
     $("#notBegun").empty();
     //$("#notBegun").css("visibility", "collapse"); 
@@ -272,8 +272,7 @@ $("#Ocean").on("click", function() {
     oceans.setData();
 });
 
-
-$("#submit").on("click", function() {
+$(document).on("click", "#submit", function() {
     resetTime();
     $("#countDown").text ("Time Left: " + timeConverter(0));
     winOrLoss();
@@ -289,16 +288,16 @@ function computeQuestions(){
     
     console.log(ans);
     if(qCount > 6){
-        $(".started").empty();
+        $(".started").css("visibility", "collapse");
 
-        $(".started").append("<p> You got " + points + " correct.<p>");
-        $(".started").append("<p> You got " + (7 - (points + unAnswered)) + " incorrect.<p>");
-        $(".started").append("<p> You left " + unAnswered + " unanswered.<p>");
+        $("#resultsIn").append("<p> You got " + points + " correct.<p>");
+        $("#resultsIn").append("<p> You got " + (7 - (points + unAnswered)) + " incorrect.<p>");
+        $("#resultsIn").append("<p> You left " + unAnswered + " unanswered.<p>");
 
         if (points > 3){
-            $(".started").append("<p> Okay, you kinda know your environmental stuff <p>");
+            $("#resultsIn").append("<p> Okay, you kinda know your environmental stuff <p>");
         }else{
-            $(".started").append("<p> You really need to study up on climate change! <p>");
+            $("#resultsIn").append("<p> You really need to study up on climate change! <p>");
             
         }
 
@@ -306,7 +305,7 @@ function computeQuestions(){
         restart = $("<button>");
         restart.addClass("restart");
         restart.text("Replay");
-        $(".started").append(restart);
+        $("#resultsIn").append(restart);
     }
 
     $("#question").text(questions[qCount]); 
@@ -330,8 +329,9 @@ function computeQuestions(){
 }
 
 $(document).on("click", ".answer", function() {
+    $(".answer").css("background-color", "rgba(255, 255, 255, 0.185)");
     ans = this.value;
-
+    $(this).css("background-color", "rgba(151, 180, 252, 0.26)");
  //   computeQuestions(); //take this out if you want to be able to change your mind about answers
 
 });
@@ -381,7 +381,51 @@ function winOrLoss(){
 }
 
 $(document).on("click", ".restart", function() {
-    location.reload();
+
+     time = 120;
+     triviaTheme = "";
+     ans = "";
+     qCount = 0;
+     questions = [];
+     answers = [];
+     points = 0;
+     option;
+     unAnswered = 0;
+ 
+
+   // location.reload();
+
+
+
+    $("#notBegun").empty();
+
+    $("#resultsIn").empty();
+
+    var dButton = $("<button>");
+    var aButton = $("<button>");
+    var oButton = $("<button>");
+    var pButton = $("<button>");
+
+    dButton.addClass("btn btn-success");
+    dButton.attr("id", "Deforestation")
+    aButton.addClass("btn btn-warning");
+    aButton.attr("id", "Agriculture")
+    oButton.addClass("btn btn-primary");
+    oButton.attr("id", "Ocean")
+    pButton.addClass("btn btn-info");
+    pButton.attr("id", "Ice_Caps")
+    dButton.text("Deforestation");
+    aButton.text("Agriculture");
+    oButton.text("Ocean");
+    pButton.text("Ice Caps");
+
+    dButton.text("Deforestation");
+    aButton.text("Agriculture");
+    oButton.text("Ocean");
+    $("#notBegun").append(dButton);
+    $("#notBegun").append(aButton);
+    $("#notBegun").append(oButton);
+    $("#notBegun").append(pButton);
 
 });
 
