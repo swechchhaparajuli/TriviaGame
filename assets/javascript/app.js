@@ -3,6 +3,7 @@
 var time = 120;
 var triviaTheme = "";
 var ans = "";
+var corrAns = "";
 var qCount = 0;
 var questions = [];
 var answers = [];
@@ -62,7 +63,7 @@ var deforestation = {
         }  
         qCount = 1;
 
-        console.log(ans);
+      //  console.log(ans);
 
         intervalId = setInterval(subTime, 1000); 
     }
@@ -117,7 +118,7 @@ var cattle = {
         }  
         qCount = 1;
 
-        console.log(ans);
+   //     console.log(ans);
 
         intervalId = setInterval(subTime, 1000); 
     }
@@ -173,7 +174,7 @@ var polar = {
         }  
         qCount = 1;
 
-        console.log(ans);
+  //      console.log(ans);
 
         intervalId = setInterval(subTime, 1000); 
     }
@@ -229,7 +230,7 @@ var oceans = {
         }  
         qCount = 1;
 
-        console.log(ans);
+  //      console.log(ans);
 
         intervalId = setInterval(subTime, 1000); 
     }
@@ -310,16 +311,25 @@ function computeQuestions(){
     }else{
 
     $("#question").text(questions[qCount]); 
-    var j = 0; 
-    var shuffled = [];
+    var j = Math.floor(Math.random()*4); 
+    var temp = answers[qCount][0];
+    var shuffled = answers[qCount];
+    corrAns = answers[qCount][0];
 
-    for (var i = 0; i < answers[qCount].length; i++ ){
+    console.log("answer: " + answers[qCount][0]);
+
+     shuffled[0] = answers[qCount][j];
+     shuffled[j]= temp;
+
+     console.log("answers[qCount]: " + shuffled );
+
+    for (var i = 0; i < shuffled.length; i++ ){
        // j = Math.floor(Math.random()*4);
         option = $("<button>");
         
         option.addClass("answer");
-        option.attr("value", answers[qCount][i]);
-        option.text(answers[qCount][i]);
+        option.attr("value", shuffled[i]);
+        option.text(shuffled[i]);
         $(".choices").append(option);
 
     }
@@ -338,6 +348,7 @@ function computeQuestions(){
 $(document).on("click", ".answer", function() {
     $(".answer").css("background-color", "rgba(255, 255, 255, 0.185)");
     ans = this.value;
+    //console.log(ans);
     $(this).css("background-color", "rgba(151, 180, 252, 0.26)");
  //   computeQuestions(); //take this out if you want to be able to change your mind about answers
 
@@ -349,7 +360,7 @@ function winOrLoss(){
 
  //   console.log("ans: " + ans);
  //   console.log("answers[qCount][0]:" + answers[qCount-1][0] );
-    if (ans == answers[qCount-1][0]){
+    if (ans == corrAns){
         points++;
         $(".started").css("visibility", "collapse");
         image.addClass("winOrLoss");
