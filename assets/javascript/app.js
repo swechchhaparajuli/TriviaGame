@@ -339,6 +339,7 @@ function computeQuestions(){
     if(qCount > 6){
         
         $(".started").css("visibility", "collapse");
+        console.log("started class emptied");
 
         $("#resultsIn").append("<p> You got " + points + " correct.<p>");
         $("#resultsIn").append("<p> You got " + (7 - (points + unAnswered)) + " incorrect.<p>");
