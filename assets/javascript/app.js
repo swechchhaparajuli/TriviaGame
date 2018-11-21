@@ -411,7 +411,7 @@ function winOrLoss(){
  //   console.log("answers[qCount][0]:" + answers[qCount-1][0] );
     if (ans == corrAns){
         points++;
-        $(".started").css("visibility", "collapse");
+        $(".started").css("visibility", "collapse");   
         image.addClass("winOrLoss");
         image.attr("src", "./assets/images/" +  triviaTheme +  "Win.jpg");
         image.attr("height", "400px");
@@ -422,12 +422,13 @@ function winOrLoss(){
        $("#notBegun").append("<p> You have gotten " + points + " right so far <p>");
 
        $("#notBegun").append(image);
+
+      
        timeOut = setTimeout(contGame,2500);
 
       //  resetTime();
         
     }else if ( ans == ""){
-
         unAnswered++;
 
     }else{
@@ -439,7 +440,10 @@ function winOrLoss(){
         $("#notBegun").text("Sucks! The answer was " + corrAns);
         $("#notBegun").append("<p> You have gotten " + points + " right so far <p>");
         $("#notBegun").append(image);
-        timeOut = setTimeout( contGame,2500);
+       
+        timeOut = setTimeout(contGame,2500);
+        
+        
 
        // intervalId = setInterval(contGame, 120); 
        // resetTime();
@@ -450,6 +454,9 @@ function winOrLoss(){
 //starting game again withOUT refreshing 
 
 $(document).on("click", ".restart", function() {
+
+    $('body').css("background-image", "url(./assets/images/globalWarming.jpg)"); 
+
 
      time = 120;
      triviaTheme = "";
@@ -501,9 +508,13 @@ $(document).on("click", ".restart", function() {
 
 
 function contGame(){
+
+    if (qCount != 7){
     $(".started").css("visibility", "visible");
+    }   
     $("#notBegun").empty();
     clearTimeout(timeOut);
+    
     
 }
 
