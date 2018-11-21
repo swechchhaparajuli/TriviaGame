@@ -51,6 +51,18 @@ var deforestation = {
 
         triviaTheme = "deforestation";
         $("#question").text(this.q[0]); 
+
+        var j = Math.floor(Math.random()*4); 
+        var temp = answers[qCount][0];
+        var shuffled = answers[qCount];
+        corrAns = answers[qCount][0];
+    
+        console.log("answer: " + answers[qCount][0]);
+    
+         shuffled[0] = answers[qCount][j];
+         shuffled[j]= temp;
+    
+         console.log("answers[qCount]: " + shuffled );
         
         for (var i = 0; i < 4; i++ ){
             
@@ -107,6 +119,18 @@ var cattle = {
 
         triviaTheme = "cattle";
         $("#question").text(this.q[0]); 
+
+        var j = Math.floor(Math.random()*4); 
+        var temp = answers[qCount][0];
+        var shuffled = answers[qCount];
+        corrAns = answers[qCount][0];
+    
+        console.log("answer: " + answers[qCount][0]);
+    
+         shuffled[0] = answers[qCount][j];
+         shuffled[j]= temp;
+    
+         console.log("answers[qCount]: " + shuffled );
         
         for (var i = 0; i < 4; i++ ){
             
@@ -162,7 +186,19 @@ var polar = {
         }
 
         triviaTheme = "polar";
-        $("#question").text(this.q[0]); 
+        $("#question").text(this.q[0]);
+        
+        var j = Math.floor(Math.random()*4); 
+        var temp = answers[qCount][0];
+        var shuffled = answers[qCount];
+        corrAns = answers[qCount][0];
+    
+        console.log("answer: " + answers[qCount][0]);
+    
+         shuffled[0] = answers[qCount][j];
+         shuffled[j]= temp;
+    
+         console.log("answers[qCount]: " + shuffled );
         
         for (var i = 0; i < 4; i++ ){
             
@@ -219,6 +255,18 @@ var oceans = {
 
         triviaTheme = "oceans"; 
         $("#question").text(this.q[0]); 
+
+        var j = Math.floor(Math.random()*4); 
+        var temp = answers[qCount][0];
+        var shuffled = answers[qCount];
+        corrAns = answers[qCount][0];
+    
+        console.log("answer: " + answers[qCount][0]);
+    
+         shuffled[0] = answers[qCount][j];
+         shuffled[j]= temp;
+    
+         console.log("answers[qCount]: " + shuffled );
         
         for (var i = 0; i < 4; i++ ){
             
@@ -387,7 +435,7 @@ function winOrLoss(){
         image.attr("src", "./assets/images/" + triviaTheme + "Loss.jpg");
         image.attr("height", "400px");
         image.attr("width", "400px");
-        $("#notBegun").text("Sucks! The answer was " + answers[qCount-1][0]);
+        $("#notBegun").text("Sucks! The answer was " + corrAns);
         $("#notBegun").append("<p> You have gotten " + points + " right so far <p>");
         $("#notBegun").append(image);
         timeOut = setTimeout( contGame,2500);
