@@ -323,8 +323,10 @@ function computeQuestions(){
         $(".choices").append(option);
 
     }
+
     qCount++;
     intervalId = setInterval(subTime, 1000); 
+    
     }
 
    // console.log(option);
