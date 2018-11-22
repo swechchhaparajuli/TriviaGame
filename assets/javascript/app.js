@@ -359,8 +359,8 @@ function computeQuestions(){
         restart.text("Replay");
         $("#resultsIn").append(restart);
     }else{
-        $(".started").css("visibility", "visible");
 
+     //   $(".started").css("visibility", "visible");
     $("#question").text(questions[qCount]); 
     var j = Math.floor(Math.random()*4); 
     var temp = answers[qCount][0];
@@ -384,7 +384,6 @@ function computeQuestions(){
         $(".choices").append(option);
 
     }
-
     qCount++;
     intervalId = setInterval(subTime, 1000); 
     
