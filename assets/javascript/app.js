@@ -326,6 +326,7 @@ $(document).on("click", "#submit", function() {
     $("#countDown").text ("Time Left: " + timeConverter(0));
     winOrLoss();
     computeQuestions();
+    
 
 });
 
@@ -358,6 +359,7 @@ function computeQuestions(){
         restart.text("Replay");
         $("#resultsIn").append(restart);
     }else{
+        $(".started").css("visibility", "visible");
 
     $("#question").text(questions[qCount]); 
     var j = Math.floor(Math.random()*4); 
@@ -389,8 +391,6 @@ function computeQuestions(){
     }
 
    // console.log(option);
-
-    
 
 }
 
@@ -510,8 +510,10 @@ $(document).on("click", ".restart", function() {
 function contGame(){
 
     if (qCount != 7){
-    $(".started").css("visibility", "visible");
-    }   
+        $(".started").css("visibility", "visible");
+        console.log("question number:" + qCount);
+    }
+
     $("#notBegun").empty();
     clearTimeout(timeOut);
     
