@@ -335,6 +335,7 @@ $(document).on("click", "#submit", function() {
 
 function computeQuestions(){
     $(".choices").empty();
+    $("#resultsIn").empty();
     
     console.log(ans);
     if(qCount > 6){
@@ -508,13 +509,17 @@ $(document).on("click", ".restart", function() {
 
 function contGame(){
 
-    if (qCount != 7){
+    if (qCount == 7){
+        $("#notBegun").empty();
+        clearTimeout(timeOut);
+        computeQuestions();
+    }else{
         $(".started").css("visibility", "visible");
         console.log("question number:" + qCount);
+        $("#notBegun").empty();
+        clearTimeout(timeOut);
     }
-
-    $("#notBegun").empty();
-    clearTimeout(timeOut);
+   
     
     
 }
